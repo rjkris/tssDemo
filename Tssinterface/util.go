@@ -88,7 +88,9 @@ func TryWriteTestFixtureFile(index int, data keygen.LocalPartySaveData, id strin
 func CreateUserDir(id string) {
 	_, callerFileName, _, _ := runtime.Caller(0)
 	srcDirName := filepath.Dir(callerFileName)
+	fmt.Printf("srcDirName: %s \n", srcDirName)
 	userDirName := fmt.Sprintf("%s/../data/agent_%s/ecdsa_data", srcDirName, id)
+	fmt.Printf("userDirName: %s \n", userDirName)
 	if _, err := os.Stat(userDirName); os.IsNotExist(err) {
 		_ = os.MkdirAll(userDirName, 0700)
 	}

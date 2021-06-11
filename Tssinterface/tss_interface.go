@@ -12,17 +12,12 @@ type PrivateKeyCert struct {
 	Id           string
 }
 
-func GenerateKey(th, part int, id string) PrivateKeyCert {
+func GenerateKey(th, part int, id string) ecdsa.PublicKey {
 	key := GenerateKeys(th, part, id)
-	pks := PrivateKeyCert{}
 	ecdsaPk := ecdsa.PublicKey{
 		Curve: elliptic.P256(),
 		X:     key.ECDSAPub.X(),
 		Y:     key.ECDSAPub.Y(),
 	}
-	pks.Pk = ecdsaPk
-	pks.Threshold = th
-	pks.Participants = part
-	pks.Id = id
-	return pks
+	return ecdsaPk
 }

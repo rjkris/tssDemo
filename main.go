@@ -1,21 +1,27 @@
 package main
 
-import (
-	"fmt"
-	"github.com/rjkris/tssDemo/Tssinterface"
-)
-func main()  {
-	pkData := make(map[string]*Tssinterface.PrivateKeyCert)
-	for i := 1; i < 4; i++ {
-		curId := string(i)
-		Tssinterface.CreateUserDir(curId)
-		pk := Tssinterface.GenerateKey(2, 3, curId)
-		pkData[curId] = &pk
-	}
-	for k, v := range pkData{
-		fmt.Printf("id: %s, pk: %+v", k, v)
-	}
-}
+//func main()  {
+//	//pkData := make(map[string]*Tssinterface.PrivateKeyCert)
+//	//pkList := make(map[string]ecdsa.PublicKey)
+//		curId := "666"
+//		fmt.Println(curId)
+//		Tssinterface.CreateUserDir(curId)
+//		pk := Tssinterface.GenerateKey(2, 3, curId)
+//		fmt.Printf("our public key: %+v \n", pk)
+//		msg := "hello world"
+//		msgInt := &big.Int{}
+//		msgInt.SetBytes([]byte(msg))
+//		signData := Tssinterface.NewSigning(msgInt,2, 3, curId)
+//		fmt.Printf("our sign: %+v \n", signData)
+//		sigR, sigS := &big.Int{}, &big.Int{}
+//		sigR.SetBytes(signData.R)
+//		sigS.SetBytes(signData.S)
+//		res := ecdsa.Verify(&pk, []byte(msg), sigR, sigS)
+//		fmt.Println(res)
+//	//for k, v := range pkList{
+//	//	fmt.Printf("id: %s, pk: %+v", k, v)
+//	//}
+//}
 //func main() {
 //	tss.SetCurve(s256k1.S256())
 //	preParams, _ := keygen.GeneratePreParams(1 * time.Minute)
